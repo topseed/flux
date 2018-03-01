@@ -1,0 +1,29 @@
+
+<head>
+</head>
+<body>
+	<script src="//cdn.jsdelivr.net/npm/fluxify@0.2.3/build/fluxify.js"></script>
+	<script src="fw.js"></script>
+	<p>View console. View page source. </p>
+	<script>
+		// fw defines an empty store (a store of models - and action mappings)
+
+		console.log('map models to actions: dataLst to updateList');
+		store.addActionCallbacks({
+			updateList: function (updater, arg) {
+				updater.set({ dataLst: arg }); //set model
+			} //action()
+		}); //()
+		
+		
+		console.log('on model dataLst changes, do something! Like update view:');
+		onModel('dataLst', function (nv, state) {
+			console.log('MODEL');
+			console.log(state);
+		});
+
+		console.log('call updateList action. For example on a fetch()');
+		act('updateList', 'myNewData');
+
+	</script>
+</body>
